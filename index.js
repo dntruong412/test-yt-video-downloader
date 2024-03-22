@@ -1,21 +1,25 @@
-const ytdl = require('ytdl-core');
+import express from 'express';
+import compression from 'compression';
+import rateLimit from 'express-rate-limit';
+import videos from './src/routes/videos.js';
 
-async function downloader(url) {
-    // Validate YouTube URL
-    if (ytdl.validateURL(url)) {
-        console.error('Invalid YouTube URL');
-        return null;
-    }
+const app = express();
+app.disable('x-powered-by');
 
-    try {
-        let info = await ytdl.getInfo(url);
+const PORT = process.env.PORT || 3000;
 
-        return ytdl.chooseFormat(info.formats, { quality: 'highest' }).url;
-    } catch (error) {
-        console.error(error)
-    }
+app.use(compression());
 
-    return null
-}
+// Rate limiting middleware
+const limiter = rateLimit({
+    windowMs: 60 * 1000, // 1 minute
+    max: 10 // limit each IP to 10 requests per windowMs
+});
+app.use(limiter);
 
-(async () => console.log(await downloader("aqz-KE-bpKQ")))();
+app.use(videos);
+
+// Start the server
+app.listen(PORT, () => {
+    console.log(`Server is running on http://localhost:${PORT}`);
+});
