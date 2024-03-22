@@ -1,0 +1,16 @@
+{
+  "name": "test-yt-video-downloader",
+  "version": "1.0.0",
+  "description": "Test Youtube video downloader",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^3.1.0",
+    "ytdl-core": "^4.11.5"
+  }
+}
