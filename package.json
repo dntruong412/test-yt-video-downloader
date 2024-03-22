@@ -4,12 +4,14 @@
   "description": "Test Youtube video downloader",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon ."
+    "start": "nodemon .",
+    "test": "jest"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "jest": "^29.7.0",
     "nodemon": "^3.1.0",
     "ytdl-core": "^4.11.5"
   }

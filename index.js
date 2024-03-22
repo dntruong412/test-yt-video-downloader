@@ -10,8 +10,7 @@ async function downloader(url) {
     try {
         let info = await ytdl.getInfo(url);
 
-        const videoUrl = await ytdl.chooseFormat(info.formats, { quality: 'highest' }).url;
-        return videoUrl;
+        return ytdl.chooseFormat(info.formats, { quality: 'highest' }).url;
     } catch (error) {
         console.error(error)
     }
@@ -19,4 +18,4 @@ async function downloader(url) {
     return null
 }
 
-downloader("aqz-KE-bpKQ");
+(async () => console.log(await downloader("aqz-KE-bpKQ")))();
