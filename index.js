@@ -1,12 +1,12 @@
+require('module-alias/register');
+
 import express from 'express';
 import compression from 'compression';
 import rateLimit from 'express-rate-limit';
-import videos from './src/routes/videos.js';
+import videos from '@/routes/videos.js';
 
 const app = express();
 app.disable('x-powered-by');
-
-const PORT = process.env.PORT || 3000;
 
 app.use(compression());
 
@@ -20,6 +20,7 @@ app.use(limiter);
 app.use(videos);
 
 // Start the server
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
 });

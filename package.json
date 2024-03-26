@@ -5,20 +5,30 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "nodemon .",
-    "test": "jest"
+    "start": "node .",
+    "dev": "nodemon .",
+    "jest": "jest"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "_moduleAliases": {
+    "@": "."
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "@/(.*)": "<rootDir>/$1"
+    }
+  },
   "devDependencies": {
     "jest": "^29.7.0",
-    "nodemon": "^3.1.0",
-    "ytdl-core": "^4.11.5"
+    "nodemon": "^3.1.0"
   },
   "dependencies": {
     "compression": "^1.7.4",
     "express": "^4.19.1",
-    "express-rate-limit": "^7.2.0"
+    "express-rate-limit": "^7.2.0",
+    "ytdl-core": "^4.11.5",
+    "module-alias": "^2.2.3"
   }
 }
