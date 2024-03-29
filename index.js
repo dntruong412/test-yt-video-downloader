@@ -1,5 +1,3 @@
-require('module-alias/register');
-
 import express from 'express';
 import compression from 'compression';
 import rateLimit from 'express-rate-limit';
@@ -24,3 +22,5 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
 });
+
+export default app;
